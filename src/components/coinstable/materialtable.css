@@ -1,0 +1,22 @@
+.table_head{
+    background-color: var(--main);
+    margin: 0!important;
+}
+.table_row .unified{
+    font-size:1.5rem;
+    font-weight:bold;
+   }
+.table_row:hover:not(:first-child ){
+ cursor: pointer;
+ background-color: var(--very-dark)
+}
+.table_body{
+    background-color: var(--dark);
+ }
+ .TableCell{
+     color: var(--light)!important;
+ }
+ .head_table {
+   margin: 0
+ 
+}

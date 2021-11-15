@@ -1,0 +1,41 @@
+.particle__background {
+  height: 65vh;
+  background-color: var(--very-dark);
+  position: relative;
+}
+.particle__background__anmite {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  left: 0;
+  z-index: 1;
+}
+ .particle__background__title{
+  color:var(--light);
+  text-align:center;
+  padding-top:60px;
+  z-index:999;
+  position: relative;
+
+}
+.particle__background__title h1{
+    margin-bottom: 30px;
+    font-size:3.5rem;
+    font-weight: bold;
+    color:var(--main)
+}
+.particle__background__title p{
+    color:white
+}
+
+
+/* responsev */
+
+@media (max-width: 600px) {
+  .particle__background__title h1{
+     font-size:2.5rem;
+}
+}  
+ 

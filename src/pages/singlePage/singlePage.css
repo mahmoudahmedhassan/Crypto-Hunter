@@ -1,0 +1,68 @@
+.SinglePage{
+  margin-top: 50px;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    color:var(--light);
+    border-right: 2px solid var(--light);
+     padding: 10px;
+}
+.sidebar__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center
+}
+.sidebar img{
+    height: 200px;
+    width: 200px;
+}
+.sidebar__info__name{
+    margin: 20px;
+    color: var(--main);
+    font-weight: bold;
+    font-size:2rem
+}
+.sidebar__info__discrptions{
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    padding: 10px;
+
+}
+.details{
+padding: 10px;
+}
+.details p{
+    font-size: 2rem;
+    color:var(--main)
+}
+.details p span{
+    margin-left: 5px;
+    color: var(--light)
+}
+
+/* responsev */
+
+@media (max-width: 600px) {
+    .details p {
+        font-size: 1rem;
+     }
+}
+/* @media (min-width: 400px)and(max-width: 600px) {
+    .details p {
+        font-size: 1rem;
+     }
+} */
+
+@media (max-width: 991px) {
+    .sidebar {
+    border-right:none;
+    }
+}
+@media (min-width:992px) and (max-width:1344px) {
+    .details p {
+        font-size: 1rem;
+     }
+}

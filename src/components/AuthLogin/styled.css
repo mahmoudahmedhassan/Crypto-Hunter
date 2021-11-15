@@ -1,0 +1,54 @@
+/* BasicModal component*/ 
+
+.taps{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 4px 8px hsla(0deg, 0%, 0%, 0.5);
+    width: 100%;
+ 
+ }
+.taps button{
+    color:var(--light);
+    font-weight: bold;
+    font-size: 1.2em;
+    background:transparent;
+    border: none;
+    padding:10px 0 ;
+ }
+.taps :first-child{
+    border-bottom: 2px solid #fff;
+    width: 50%;
+}
+.taps :last-child{
+    border-bottom: 2px solid red;
+    width: 50%;
+}
+
+
+/* BasicModal component*/ 
+
+/* login component */
+
+
+ /* .login{
+    margin: 20px;
+} */
+/* .login input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--light);
+    margin-bottom: 10px;
+    outline: none;
+    color: #fff;
+    background-color:transparent;
+} */
+
+form{
+    width: 100%;
+} 
+.your_name{
+    color: #fff;
+}
+
+/* login component */
