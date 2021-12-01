@@ -3,11 +3,12 @@ import "./header.css";
 import {CryptoState} from "../../useCrypto";
 import { useHistory } from "react-router-dom";
 import BasicModal from '../AuthLogin/Modaluser'
+import Sidebar from '../Sidepar/Sidebar'
 
 function Header() {
   let history = useHistory();
-  const { setCurrency,currency } = CryptoState();
-
+  const { setCurrency,currency, user } = CryptoState();
+ 
   return (
     <div className="header">
       <div className="header__title">
@@ -25,7 +26,10 @@ function Header() {
         </select>
 
         <div className="header__coins__login">
-          <button className="login"> <BasicModal/> </button>
+
+          { user?<Sidebar/>:<button className="login"> <BasicModal/></button> }
+
+         
         </div>
       </div>
     </div>

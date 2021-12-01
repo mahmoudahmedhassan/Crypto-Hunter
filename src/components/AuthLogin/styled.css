@@ -24,6 +24,16 @@
     border-bottom: 2px solid red;
     width: 50%;
 }
+.taps_or{
+    text-align: center;
+    font-size:1em;
+    font-weight:bold;
+    color: var(--light);
+ }
+.taps_google_button{
+    width: 100%;
+    margin:auto;
+}
 
 
 /* BasicModal component*/ 

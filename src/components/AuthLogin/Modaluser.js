@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import './styled.css'
+import './styled.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Login from './Login';
 import Register from './Register';
+import GoogleButton from 'react-google-button';
+import {auth} from '../../Firebase/firebasConfig';
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {CryptoState} from '../../useCrypto';
 
 const style = {
   position: 'absolute',
@@ -18,6 +22,11 @@ const style = {
   background: '#424242',
   borderRadius:'10px'
 };
+const _style ={
+  width:'85%',
+  margin: 'auto',
+  marginBottom:'20px'
+}
 
 export default function BasicModal() {
 
@@ -25,12 +34,37 @@ export default function BasicModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [tap, setTap] = useState(0);
+  const {setAlert } = CryptoState();
+
 
   const handelClick = (index) => {
     setTap(index)
   }
-  console.log(tap)
-  return (
+  const googleProvider = new GoogleAuthProvider();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        setAlert({
+          open: true,
+          Msg: `Sign Up Successful. Welcome ${res.user.email}`,
+          type: "success",
+        });
+
+        handleClose();
+      })
+      .catch((err) => {
+        setAlert({
+          open: true,
+          Msg: err.message,
+          type: "error",
+        });
+        return;
+      });
+  };
+
+
+   return (
     <div>
       <Button onClick={handleOpen}>LOGIN</Button>
       <Modal
@@ -45,8 +79,11 @@ export default function BasicModal() {
             <button onClick={() => handelClick(1)} style={{ borderBottom: tap === 1 ? '2px solid red' : 'none' }}> Register</button>
           </div>
 
-          <Login tap={tap} />
-          <Register tap={tap} />
+          <Login tap={tap}  handleClose={handleClose}/>
+          <Register tap={tap} handleClose={()=>handleClose(false)}/>
+          <p className ='taps_or'>OR</p>
+
+          <GoogleButton onClick={signInWithGoogle} style={_style}  />
 
         </Box>
       </Modal>

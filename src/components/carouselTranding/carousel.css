@@ -1,7 +1,7 @@
 .main{
     height: "50%";
     position: relative;
-    z-index: 99999;
+    z-index: 9;
     width: 80%;
     margin: auto;
  }

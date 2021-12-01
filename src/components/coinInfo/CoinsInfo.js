@@ -8,11 +8,11 @@ import { Line } from "react-chartjs-2";
 import {CryptoState} from '../../useCrypto'
 
 function CoinsInfo({ coinsDetails }) {
-  const {currency,symbol } = CryptoState();
-   const [days,setDays]= useState('1');
- 
+  const { currency } = CryptoState();
+  const [days,setDays]= useState('1');
   const [coinsInfo, setCoinsInfo] = useState();
   let URL = `https://api.coingecko.com/api/v3/coins/${coinsDetails}/market_chart?vs_currency=${currency}&days=${days}`;
+
   const fetchCoinsInfo = async () => {
     const { data } = await axios.get(URL);
     setCoinsInfo(data.prices);

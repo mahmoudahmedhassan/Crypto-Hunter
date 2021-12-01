@@ -1,22 +1,47 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './styled.css';
-import { Box, Button, ThemeProvider,createTheme,} from "@material-ui/core";
+import { Box, Button} from "@material-ui/core";
 import { TextField } from '@mui/material';
+import {CryptoState} from '../../useCrypto'
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth} from '../../Firebase/firebasConfig'
 
+function Login({tap,handleClose}) {
+    const {setAlert} =CryptoState();
+    const [email,setEmail] =useState('');
+    const [password,setPassword] =useState('');
 
-function Login({tap}) {
+    const handelSubmit = async()=>{
 
-    const darkTheme = createTheme({
-        palette: {
-          primary: {
-            main: "#fff",
-          },
-          type: "dark",
-        },
-      });
+         if(!email || !password){
+         return setAlert({
+                open: true,
+                type: 'error',
+                Msg: 'Please fill all the Fields'
+            })}
+        try {
+            const res = await signInWithEmailAndPassword(
+            auth,email,password
+        );
+        setAlert({
+            open: true,
+            Msg: `successful ${res.user.email}`,
+            type: 'success'
+        });
+        handleClose();
+
+        }catch(err){
+            setAlert({
+                open:true,
+                Msg: err.message,
+                type: 'error'
+            });
+            return;
+        }
+    }
+ 
     return (
-        <ThemeProvider theme={darkTheme}>
-
+ 
         <div style={{display: tap === 0 ?'flex':'none'}} className='login' >
             
             <form autoComplete='off'>
@@ -33,18 +58,23 @@ function Login({tap}) {
                         type="email"
                         label="Enter Email"
                         className='your_name'
-                       />
+                        value={ email}
+                        onChange={({target})=>setEmail(target.value)}
+                        />
                     <TextField
                         variant="outlined"
                         label="Enter Password"
                         type="password"
-                         
+                        value={ password}
+                        onChange={({target})=>setPassword(target.value)}
+
                     />
  
                     <Button
                         variant="contained"
                         size="large"
-                        style={{ backgroundColor: "#EEBC1D" }}
+                        style={{ backgroundColor: "#EEBC1D",fontWeight:'bold' }}
+                        onClick={handelSubmit}
                     >
                        Login
                     </Button>
@@ -52,8 +82,7 @@ function Login({tap}) {
             </form>
             
         </div>
-        </ThemeProvider>
-    )
+     )
 }
 
 export default Login

@@ -4,9 +4,11 @@ import Home from './pages/HomePage/Home';
 import SinglePage from './pages/singlePage/SinglePage';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-function App() {
-  return (
+import Alert from './components/alertMsg/Alert';
+ function App() {
+   return (
     <div className="App">
+
       <Router>
         <Header />
          <Switch>
@@ -17,7 +19,10 @@ function App() {
             <SinglePage />
           </Route>
          </Switch>
+          <Alert /> 
+
        </Router>
+
     </div>
   );
 }

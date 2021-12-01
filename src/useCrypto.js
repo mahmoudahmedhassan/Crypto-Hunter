@@ -1,40 +1,35 @@
-// import react, {createContext,useContext, useState, useEffect} from 'react'
 
-//  const crypto =createContext();
-
-// const UseCrypto =({children})=> {
-
-//     const [currency,setCurrency]= useState('USD');
-//     const [symbol,setSymbol]= useState('$');
-
-//      useEffect(() => {
-//         if(currency==='USD') setSymbol("$");
-//         else if (currency === "EUR") setSymbol("€");
-//      }, [currency]);
-
-//     console.log(currency,symbol);
-    
-//      return(
-//          <crypto.Provider value={{setCurrency,currency,symbol}}>
-//              {children}
-//          </crypto.Provider>
-//      )
-//  }
-
-// export default UseCrypto;
-
-// export const CryptoState = ()=>{
-//    return useContext(Crypto);
-// }
-
-
-import React, { createContext, useContext, useEffect, useState } from "react";
-
+import React, {createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import {auth} from './Firebase/firebasConfig'
 const Crypto = createContext();
 
 const CryptoContext = ( props ) => {
   const [currency, setCurrency] = useState("USD");
   const [symbol, setSymbol] = useState("$");
+  const [alert, setAlert] = useState([{
+    open:false,
+    type:'success',
+    Msg:''
+  }]);
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) setUser(user);
+      else setUser(null);
+    });
+    console.log(`user data ${user}`)
+
+  }, [user]);
+ 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+     setAlert({open:false})
+  };
 
   useEffect(() => {
     if (currency === "USD") setSymbol("$");
@@ -42,7 +37,7 @@ const CryptoContext = ( props ) => {
   }, [currency]);
 
   return (
-    <Crypto.Provider value={{ currency, setCurrency, symbol }}>
+    <Crypto.Provider value={{ currency, setCurrency, symbol,alert ,setAlert,handleClose,user}}>
       {props.children}
     </Crypto.Provider>
   );

@@ -7,8 +7,10 @@ import "./singlePage.css";
 import CoinsInfo from "../../components/coinInfo/CoinsInfo";
 import { Container, Row, Col } from "react-bootstrap";
 import {CryptoState} from "../../useCrypto";
-function SinglePage() {
-  const {symbol } = CryptoState();
+import Button from '@mui/material/Button';
+
+ function SinglePage() {
+  const {symbol,user } = CryptoState();
 
   let { id } = useParams();
   const [coinsDetails, setCoinsDetails] = useState();
@@ -63,19 +65,23 @@ function SinglePage() {
                 <p className="details__marketcap">
                   Market Cap:
                   <span>
-                  {symbol} 
+
+                   {symbol} 
                     {(
                       coinsDetails?.market_data.market_cap.ars / 1000000
                     ).toFixed(1)} 
-                    M
+                     M
                   </span>
                 </p>
+
+                {user? (<Button variant="contained"  color='success' className="Add_to_watch_list">Add to watch list</Button>):null}
+
               </div>
               </div>
 
             </Col>
 
-            <Col item lg={8} xs={12} container>
+             <Col item lg={8} xs={12} container>
               <CoinsInfo coinsDetails={coinsDetails.id}/>
             </Col>
 
