@@ -1,7 +1,7 @@
 import React from "react";
-import {Particles} from "react-particles-js"
+import {Particles} from "react-particles-js";
 import ParticleConfig from "./particlesConfig";
-import SlideTest from '../carouselTranding/SlideTest'
+import CarouselTranding from '../carouselTranding/CarouselTranding'
 import './partciles.css';
 
  
@@ -13,7 +13,7 @@ export default function ParticleBackground() {
              <h1>Crypto Hunter</h1>
              <p>Get All The Info Regarding Your Favorite Crypto Currency</p>
          </div>
-          <SlideTest/>
+          <CarouselTranding/>
   
         </div>
     );

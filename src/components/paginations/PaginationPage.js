@@ -1,6 +1,5 @@
 import React from "react";
 import './pagination.css'
-
 import Pagination from "@material-ui/lab/Pagination";
 export default function CustomPagination({setPage,page,handelSearch}) {
 
@@ -12,7 +11,6 @@ export default function CustomPagination({setPage,page,handelSearch}) {
     paddingBottom: '50px',
    }
   
- 
   // const handleChange = ({target}) => {
   //        window.scroll(0, 0);
   //        setPage(target.value);

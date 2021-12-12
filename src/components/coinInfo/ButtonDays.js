@@ -31,10 +31,8 @@ function ButtonDays({ setDays, days }) {
     setDays(value);
     setData({ ...data, active: data.days.id });
    };
-  const hhh = (idd) => {
-        console.log(idd)
-
-    if (data.days.idd === data.active) {
+  const hhh = (id) => {
+    if (data.days.id === data.active) {
       return "on";
     } else {
       return "off";

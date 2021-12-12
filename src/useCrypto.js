@@ -1,7 +1,9 @@
 
 import React, {createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import {auth} from './Firebase/firebasConfig'
+import {auth,db} from './Firebase/firebasConfig'
+import { onSnapshot, doc } from "firebase/firestore";
+
 const Crypto = createContext();
 
 const CryptoContext = ( props ) => {
@@ -12,8 +14,27 @@ const CryptoContext = ( props ) => {
     type:'success',
     Msg:''
   }]);
-
   const [user, setUser] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
+
+  useEffect(() => {
+
+    if (user) {
+      const coinRef = doc(db, "watchlist", user?.uid);
+      var unsubscribe = onSnapshot(coinRef, (coin) => {
+        if (coin.exists()) {
+          console.log(coin.data().coins);
+          setWatchlist(coin.data().coins);
+        } else {
+          console.log("No Items in Watchlist");
+        }
+      });
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [user]);
+
   useEffect(() => {
 
     onAuthStateChanged(auth, (user) => {
@@ -23,6 +44,7 @@ const CryptoContext = ( props ) => {
     console.log(`user data ${user}`)
 
   }, [user]);
+  
  
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -37,7 +59,7 @@ const CryptoContext = ( props ) => {
   }, [currency]);
 
   return (
-    <Crypto.Provider value={{ currency, setCurrency, symbol,alert ,setAlert,handleClose,user}}>
+    <Crypto.Provider value={{ currency, setCurrency, symbol,alert ,setAlert,handleClose,user,watchlist}}>
       {props.children}
     </Crypto.Provider>
   );
@@ -48,3 +70,5 @@ export default CryptoContext;
 export const CryptoState = () => {
   return useContext(Crypto);
 }
+
+

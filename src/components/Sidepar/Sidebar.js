@@ -19,7 +19,7 @@ export default function Sidebar() {
 
     // toggleDrawer();
   };
-
+  console.log(`user details ${user.uid}`);
   const [state, setState] = React.useState({
 
     right: false,
@@ -37,7 +37,8 @@ export default function Sidebar() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Avatar
+ 
+           <Avatar
             onClick={toggleDrawer(anchor, true)}
             style={{
               height: 38,

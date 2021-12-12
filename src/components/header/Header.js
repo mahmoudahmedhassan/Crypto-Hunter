@@ -26,6 +26,7 @@ function Header() {
         </select>
 
         <div className="header__coins__login">
+          
 
           { user?<Sidebar/>:<button className="login"> <BasicModal/></button> }
 
