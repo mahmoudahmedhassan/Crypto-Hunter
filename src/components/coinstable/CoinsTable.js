@@ -29,8 +29,7 @@ function CoinsTable() {
 
   
   const handelSearch = () => {
-    return tableDate.filter(
-      (coin) =>
+    return tableDate.filter( (coin) =>
         coin.name.toLowerCase().includes(search.toLowerCase()) ||
         coin.symbol.toLowerCase().includes(search)
     );

@@ -12,38 +12,42 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from '../../Firebase/firebasConfig'
 
 function SinglePage() {
-  const { symbol, setAlert, user, watchlist } = CryptoState();
+  const { symbol, setAlert, user,  watchlist } = CryptoState();
+  
+  console.log('bbbbbbbbb' + ":"+ watchlist)
 
   let { id } = useParams();
   const [coinsDetails, setCoinsDetails] = useState();
-
+ 
   let URL = `https://api.coingecko.com/api/v3/coins/${id}`;
-
   const fetchCoinsDetails = async () => {
     const Data = await axios.get(URL);
     setCoinsDetails(Data.data);
   };
-
+ 
   useEffect(() => {
     fetchCoinsDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const inWatchlist = watchlist.includes(coinsDetails?.id);
- 
-  const addToWatchList = async () => {
-    const coinRef = doc(db, "watchlist", user.uid);
+
+  const addToWatchList = async () => { 
+
+  const coinRef = doc(db, "Watchlist", user.uid); 
+
     try {
       await setDoc(
         coinRef,
-        { coins: watchlist ? [...watchlist, coinsDetails?.id] : [coinsDetails?.id] },
+       { coins: watchlist ? [...watchlist, coinsDetails?.id] : [coinsDetails?.id] },
       );
-
+ 
       setAlert({
         open: true,
         Msg: `${coinsDetails.name} Added to the Watchlist !`,
         type: "success",
       });
+
     } catch (error) {
       setAlert({
         open: true,
@@ -52,28 +56,11 @@ function SinglePage() {
       });
     }
   };
+  // useEffect(() => {
+  //   addToWatchList()
+  //  }, []);
 
-
-  // const addToWatchList = async () => {
-
-  //   try {
-  //     await db.collection('watchlist').user.uid.add({
-  //        coins: watchlist ? [...watchlist, coinsDetails?.id] : [coinsDetails?.id] 
-  //     });
-  //       setAlert({
-  //       open: true,
-  //       Msg: `${coinsDetails.name} Added to the Watchlist !`,
-  //       type: "success",
-  //     });
-  //   } catch (error) {
-  //         setAlert({
-  //           open: true,
-  //           Msg: error.message,
-  //           type: "error",
-  //         });
-  //       }
-  //     };
- 
+   
   // remove items from user list 
 
   const removeFromWatchlist = async () => {
@@ -152,7 +139,8 @@ function SinglePage() {
                         className="Add_to_watch_list"
                         style={{ backgroundColor: inWatchlist ? 'red' : "rgb(238, 188, 29)" }}
 
-                        onClick={inWatchlist ? removeFromWatchlist : addToWatchList}>
+                        onClick={inWatchlist ? removeFromWatchlist : addToWatchList}
+                        >
                         {inWatchlist ? "Remove to watch list" : "Add to watch list"}
                       </Button>)
                       : null

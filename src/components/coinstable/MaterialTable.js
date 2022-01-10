@@ -7,6 +7,7 @@ import "./materialtable.css";
 
 export default function BasicTable({handelSearch ,symbol}) {
     const [page, setPage] = useState(1);
+    console.log(`handelSearch :${handelSearch}`)
 
   let history = useHistory();
   const darkTheme = createTheme({

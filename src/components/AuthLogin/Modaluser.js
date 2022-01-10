@@ -36,7 +36,6 @@ export default function BasicModal() {
   const [tap, setTap] = useState(0);
   const {setAlert } = CryptoState();
 
-
   const handelClick = (index) => {
     setTap(index)
   }
@@ -50,8 +49,9 @@ export default function BasicModal() {
           Msg: `Sign Up Successful. Welcome ${res.user.email}`,
           type: "success",
         });
-
-        handleClose();
+        window.location.pathname ="/";
+        
+         handleClose();
       })
       .catch((err) => {
         setAlert({
@@ -75,7 +75,7 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <div className="taps">
-            <button onClick={() => handelClick(0)} style={{ borderBottom: tap === 0 ? '2px solid red' : 'none' }} > Login</button>
+            <button onClick={() => handelClick(0)} style={{ borderBottom: tap === 0 ? '2px solid red' : 'none' }} > Login </button>
             <button onClick={() => handelClick(1)} style={{ borderBottom: tap === 1 ? '2px solid red' : 'none' }}> Register</button>
           </div>
 

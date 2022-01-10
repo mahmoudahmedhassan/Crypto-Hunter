@@ -19,7 +19,6 @@ export default function Sidebar() {
 
     // toggleDrawer();
   };
-  console.log(`user details ${user.uid}`);
   const [state, setState] = React.useState({
 
     right: false,
