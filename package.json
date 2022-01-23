@@ -2,7 +2,7 @@
   "name": "crypto-hunter-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mahmoudahmedhassan.github.io/Crypto-Hunter",
+  "homepage": "",
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -37,9 +37,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predwploy":"npm run build",
-    "deploy":"gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

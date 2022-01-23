@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import CustomPagination from '../paginations/PaginationPage';
 import "./materialtable.css";
 
-export default function BasicTable({handelSearch ,symbol}) {
+export default function BasicTable({handelSearch ,symbol}){
     const [page, setPage] = useState(1);
     console.log(`handelSearch :${handelSearch}`)
 
@@ -76,15 +76,14 @@ export default function BasicTable({handelSearch ,symbol}) {
                   {row.current_price.toFixed(2)}
                 </TableCell>
                 <TableCell align="right"
-                style={{color:`${row.price_change_24h < 0 ? 'red' : '#0ECB81'} ` , }} 
-                >
+                style={{color:`${row.price_change_24h < 0 ? 'red' : '#0ECB81'} `}} >
                   <span>{symbol}</span>
 
                   {row.price_change_24h.toFixed(2)}
                 </TableCell>
                 <TableCell align="right"
-                style={{color: '#fff'}}
-                >
+                style={{color: '#fff'}}>
+
                   <span>{symbol}</span>
                   
                   {(row.market_cap / 1000000).toFixed(2)} M

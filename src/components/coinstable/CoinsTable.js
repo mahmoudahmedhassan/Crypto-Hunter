@@ -49,7 +49,7 @@ function CoinsTable() {
       <Container style={{ TextAlign: "center" }}>
         <div className="head_table">
           <h3 className="head_table_title">
-            Cryptocurrency Prices by Market Cap
+            Crypto Currency Prices By Market Cap
           </h3>
           <TextField
             label="Search for Cryptocurrency"
@@ -58,8 +58,8 @@ function CoinsTable() {
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
-
-          {loading ? (
+ 
+           {loading ? (
             <Stack sx={{ width: "100%", color: "grey.500" }} spacing={2}>
               <LinearProgress
                 style={{

@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from "react";
 import "./conisinfo.css";
 import CircularStatic from "../Progress";
-// import useCrypto from "../../useCrypto";
 import axios from "axios"; 
-import ButtonDays from './ButtonDays'
+import ButtonDays from './ButtonDays';
+ 
 import { Line } from "react-chartjs-2";
 import {CryptoState} from '../../useCrypto'
 
@@ -54,8 +54,10 @@ function CoinsInfo({ coinsDetails }) {
             />
           </div>
           <div>
-              <ButtonDays setDays={setDays} days={days}/>
-          </div>
+
+          <ButtonDays setDays={setDays} days={days}/>
+
+           </div>
         </>
       )}
     </div>

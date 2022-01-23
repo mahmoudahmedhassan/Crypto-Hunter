@@ -13,9 +13,8 @@ import { db } from '../../Firebase/firebasConfig'
 
 function SinglePage() {
   const { symbol, setAlert, user,  watchlist } = CryptoState();
-  
-  console.log('bbbbbbbbb' + ":"+ watchlist)
 
+ 
   let { id } = useParams();
   const [coinsDetails, setCoinsDetails] = useState();
  
@@ -56,12 +55,8 @@ function SinglePage() {
       });
     }
   };
-  // useEffect(() => {
-  //   addToWatchList()
-  //  }, []);
-
-   
-  // remove items from user list 
+  
+   // remove items from user list 
 
   const removeFromWatchlist = async () => {
     const coinRef = doc(db, "watchlist", user.uid);

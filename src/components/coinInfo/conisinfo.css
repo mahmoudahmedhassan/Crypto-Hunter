@@ -28,13 +28,7 @@
     color: var(--light);
     border:1px solid var(--main);
 }
-
-.on{
-  color: red;
-}
-.off{
-  color: blue;
-}
+ 
 
 @media (max-width: 600px) {
   .ButtonDays {
@@ -48,3 +42,9 @@
     width: 40%;
   }
 }
+.bb{
+  background: var(--very-dark)!important;
+  color: var(--light)!important;
+  border:1px solid var(--main)!important;
+}
+ 

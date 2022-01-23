@@ -1,8 +1,8 @@
 
 import React, {createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import {auth,db} from './Firebase/firebasConfig'
-import { onSnapshot, doc } from "firebase/firestore";
+import {auth, } from './Firebase/firebasConfig'
+// import { onSnapshot, doc } from "firebase/firestore";
 
 const Crypto = createContext();
 
@@ -40,7 +40,7 @@ const CryptoContext = ( props ) => {
   }, [currency]);
 
   return (
-    <Crypto.Provider value={{ currency, setCurrency, symbol,alert ,setAlert,handleClose,user,watchlist}}>
+    <Crypto.Provider value={{ currency, setCurrency, symbol,alert ,setAlert,handleClose,user,watchlist }}>
       {props.children}
     </Crypto.Provider>
   );

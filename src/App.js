@@ -10,6 +10,7 @@ import Alert from './components/alertMsg/Alert';
     <div className="App">
 
       <Router>
+        
         <Header />
          <Switch>
           <Route exact path="/">
