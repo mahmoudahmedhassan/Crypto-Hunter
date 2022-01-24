@@ -1,6 +1,6 @@
 import React from "react";
-import {Particles} from "react-particles-js";
-import ParticleConfig from "./particlesConfig";
+// import {Particles} from "react-particles-js";
+// import ParticleConfig from "./particlesConfig";
 import CarouselTranding from '../carouselTranding/CarouselTranding'
 import './partciles.css';
 
@@ -8,7 +8,7 @@ import './partciles.css';
 export default function ParticleBackground() {
     return (
         <div className='particle__background'>
-         <Particles params={ParticleConfig}  className='particle__background__anmite'></Particles>
+         {/* <Particles params={ParticleConfig}  className='particle__background__anmite'></Particles> */}
          <div className='particle__background__title'>
              <h1>Crypto Hunter</h1>
              <p>Get All The Info Regarding Your Favorite Crypto Currency</p>
