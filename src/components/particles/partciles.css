@@ -1,5 +1,5 @@
 .particle__background {
-  height: 65vh;
+  height: 75%;
   background-color: var(--very-dark);
   position: relative;
 }

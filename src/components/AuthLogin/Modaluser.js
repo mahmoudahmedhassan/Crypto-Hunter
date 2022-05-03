@@ -72,8 +72,8 @@ export default function BasicModal() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
+       >
+        <Box sx={style} className='modal_body'>
           <div className="taps">
             <button onClick={() => handelClick(0)} style={{ borderBottom: tap === 0 ? '2px solid red' : 'none' }} > Login </button>
             <button onClick={() => handelClick(1)} style={{ borderBottom: tap === 1 ? '2px solid red' : 'none' }}> Register</button>

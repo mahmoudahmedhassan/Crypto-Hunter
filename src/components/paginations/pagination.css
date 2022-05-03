@@ -1,6 +1,5 @@
 @media (max-width: 400px) {
-    .MuiPagination-ul-110:first-child{
+     .MuiPagination-ul-80 li:first-child, .MuiPagination-ul-80 li:last-child{
         display: none !important;
     }
   }  
-   

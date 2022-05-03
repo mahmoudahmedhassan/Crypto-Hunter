@@ -60,5 +60,12 @@ form{
 .your_name{
     color: #fff;
 }
+@media (max-width: 475.98px) {
+    .modal_body{
+        width:300px !important;
+    }  
+ }
+
+
 
 /* login component */

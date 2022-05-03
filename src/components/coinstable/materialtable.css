@@ -6,8 +6,10 @@
     font-size:1.5rem;
     font-weight:bold;
 }
-.table_row:hover:not(:first-child ){
- cursor: pointer;
+.table_row:hover{
+    cursor: pointer;
+}
+.table_row:hover:not(:first-child){
  background-color: var(--very-dark)
 }
 .table_body{
